@@ -1,0 +1,30 @@
+/////////////////////////////////////
+/// VARIABLES
+/////////////////////////////////////
+$color-primary-1: hsl(233, 26%, 24%);
+$color-primary-2: hsl(136, 65%, 51%);
+$color-primary-3: hsl(192, 70%, 51%);
+
+$color-neutral-1: hsl(233, 8%, 62%);
+$color-neutral-2: hsl(220, 16%, 96%);
+$color-neutral-3: hsl(0, 0%, 98%);
+$color-neutral-4: hsl(0, 0%, 100%);
+
+/////////////////////////////////////
+/// GLOBAL
+/////////////////////////////////////
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	font-family: "Public Sans", sans-serif;
+}
+
+body {
+	font-size: 1.8rem;
+}
