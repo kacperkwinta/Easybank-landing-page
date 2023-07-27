@@ -104,7 +104,7 @@ body {
 /////////////////////////////////////
 nav {
 	padding: 0 12.6rem;
-	// background-color: $color-neutral-4;
+	background-color: $color-neutral-4;
 
 	@include flex(space-between, center);
 
@@ -161,17 +161,22 @@ nav {
 			flex-basis: 100%;
 			order: 2;
 
-			background-color: pink;
+			background-color: $color-neutral-2;
+			border-radius: 4px;
 			margin: 2.4rem 0;
-			padding: 0;
+			padding: 1.2rem 0;
 
 			a {
+				color: $color-primary-1;
+				padding: 1.2rem 0;
 			}
 		}
 
 		.btn {
-			// display: none;
-			order: 4;
+			position: fixed;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 2.4rem;
 		}
 
 		.icon-hamburger {
@@ -179,6 +184,15 @@ nav {
 			display: unset;
 		}
 	}
+}
+
+/////////////////////////////////////
+/// HEADER
+/////////////////////////////////////
+header {
+	height: 60vh;
+	background: url(../images/image-mockups.png) no-repeat no-repeat right bottom,
+		url(../images/bg-intro-desktop.svg) no-repeat no-repeat ;
 }
 
 /////////////////////////////////////
