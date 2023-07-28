@@ -55,6 +55,11 @@ $color-neutral-4: hsl(0, 0%, 100%);
 	display: none !important;
 }
 
+.invisible {
+	opacity: 0 !important;
+	user-select: none !important;
+}
+
 .visible {
 	opacity: 1 !important;
 	user-select: all !important;
@@ -96,6 +101,7 @@ html {
 }
 
 body {
+	position: relative;
 	font-size: 1.8rem;
 }
 
@@ -108,32 +114,41 @@ nav {
 
 	@include flex(space-between, center);
 
-	.wrapper {
+	.wrapper-links {
+		transition: all 150ms ease;
+
 		@include flex(center, center);
 		gap: 3.2rem;
 
 		a {
 			transition: all 150ms ease;
-			border-bottom: 4px solid transparent;
 			color: $color-neutral-1;
 			text-decoration: none;
 			display: inline-block;
 			padding: 2.4rem 0 2.2rem 0;
 
-			&:hover,
-			&:active {
+			&:hover {
 				color: $color-primary-1;
-				border-bottom: 4px solid $color-primary-2;
+			}
+
+			&::after {
+				content: "";
+				display: block;
+				height: 4px;
+				width: 0%;
+				background: linear-gradient(
+					to right,
+					$color-primary-2,
+					$color-primary-3
+				);
+				transition: width 250ms ease;
+			}
+
+			&:hover::after {
+				width: 100%;
 			}
 		}
 	}
-}
-
-/////////////////////////////////////
-/// MOBILE NAVIGATION
-/////////////////////////////////////
-.icon-close {
-	display: none;
 }
 
 .icon-hamburger {
@@ -141,11 +156,20 @@ nav {
 }
 
 .mobile-nav {
-	// display: none;
-	@include flex(center, center);
+	display: none;
 }
 
+.overlay {
+	display: none;
+}
+
+/////////////////////////////////////
+/// MOBILE NAVIGATION
+/////////////////////////////////////
 nav {
+	position: relative;
+	z-index: 100;
+
 	@include respond(tab-land) {
 		padding: 2.4rem 9.6rem;
 
@@ -155,16 +179,22 @@ nav {
 			order: -1;
 		}
 
-		.wrapper {
+		.wrapper-links {
+			z-index: 100;
+
 			flex-direction: column;
 			gap: 0;
-			flex-basis: 100%;
-			order: 2;
 
 			background-color: $color-neutral-2;
 			border-radius: 4px;
 			margin: 2.4rem 0;
 			padding: 1.2rem 0;
+
+			position: absolute;
+			inset: 6.4rem 9.6rem auto 9.6rem;
+
+			opacity: 0;
+			user-select: none;
 
 			a {
 				color: $color-primary-1;
@@ -173,10 +203,11 @@ nav {
 		}
 
 		.btn {
-			position: fixed;
-			left: 50%;
-			transform: translateX(-50%);
-			bottom: 2.4rem;
+			display: none;
+		}
+
+		.mobile-nav {
+			@include flex(center, center);
 		}
 
 		.icon-hamburger {
@@ -186,13 +217,28 @@ nav {
 	}
 }
 
+.overlay {
+	transition: all 350ms ease;
+	position: absolute;
+	display: unset;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(
+		to bottom,
+		hsl(233, 26%, 24%),
+		hsla(0, 0%, 100%, 0.438)
+	);
+	z-index: 50;
+}
+
 /////////////////////////////////////
 /// HEADER
 /////////////////////////////////////
 header {
 	height: 60vh;
 	background: url(../images/image-mockups.png) no-repeat no-repeat right bottom,
-		url(../images/bg-intro-desktop.svg) no-repeat no-repeat ;
+		url(../images/bg-intro-desktop.svg) no-repeat no-repeat;
 }
 
 /////////////////////////////////////
