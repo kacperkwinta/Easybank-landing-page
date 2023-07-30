@@ -92,6 +92,7 @@ $color-neutral-4: hsl(0, 0%, 100%);
 	margin: 0;
 	padding: 0;
 	box-sizing: inherit;
+	font-family: inherit !important;
 }
 
 html {
@@ -101,7 +102,6 @@ html {
 }
 
 body {
-	position: relative;
 	font-size: 1.8rem;
 }
 
@@ -109,13 +109,16 @@ body {
 /// NAVIGATION
 /////////////////////////////////////
 nav {
-	padding: 0 12.6rem;
+	position: relative;
 	background-color: $color-neutral-4;
+	z-index: 100;
+	padding: 0 10vw;
 
 	@include flex(space-between, center);
+	flex-wrap: wrap;
 
 	.wrapper-links {
-		transition: all 150ms ease;
+		transition: all 250ms ease;
 
 		@include flex(center, center);
 		gap: 3.2rem;
@@ -159,21 +162,12 @@ nav {
 	display: none;
 }
 
-.overlay {
-	display: none;
-}
-
 /////////////////////////////////////
 /// MOBILE NAVIGATION
 /////////////////////////////////////
 nav {
-	position: relative;
-	z-index: 100;
-
 	@include respond(tab-land) {
-		padding: 2.4rem 9.6rem;
-
-		flex-wrap: wrap;
+		padding: 2.4rem 10vw;
 
 		.logo {
 			order: -1;
@@ -185,9 +179,9 @@ nav {
 			flex-direction: column;
 			gap: 0;
 
-			background-color: $color-neutral-2;
+			background-color: $color-neutral-1;
 			border-radius: 4px;
-			margin: 2.4rem 0;
+			margin: 2.4rem auto;
 			padding: 1.2rem 0;
 
 			position: absolute;
@@ -217,28 +211,25 @@ nav {
 	}
 }
 
-.overlay {
-	transition: all 350ms ease;
-	position: absolute;
-	display: unset;
-	inset: 0;
-	height: 100%;
-	width: 100%;
-	background: linear-gradient(
-		to bottom,
-		hsl(233, 26%, 24%),
-		hsla(0, 0%, 100%, 0.438)
-	);
-	z-index: 50;
-}
-
 /////////////////////////////////////
 /// HEADER
 /////////////////////////////////////
 header {
-	height: 60vh;
-	background: url(../images/image-mockups.png) no-repeat no-repeat right bottom,
-		url(../images/bg-intro-desktop.svg) no-repeat no-repeat;
+	padding: 9.6rem 10vw;
+	background: url(../images/bg-intro-desktop.svg) no-repeat no-repeat 80rem,
+		$color-neutral-3;
+	padding-bottom: 18rem;
+}
+
+/////////////////////////////////////
+/// CTA IN HEADER
+/////////////////////////////////////
+.cta-container {
+	max-width: 46rem;
+
+	& * {
+		margin-top: 2.4rem;
+	}
 }
 
 /////////////////////////////////////
@@ -257,4 +248,30 @@ header {
 	&:active {
 		opacity: 0.75;
 	}
+}
+
+h1,
+h2,
+h3,
+h4 {
+	color: $color-primary-1;
+}
+
+.heading-1 {
+	font-size: 6.4rem;
+	font-weight: 300;
+}
+.heading-2 {
+	font-size: 4.8rem;
+}
+.heading-3 {
+	font-size: 3.2rem;
+}
+.heading-4 {
+	font-size: 2.4rem;
+}
+
+.paragraph {
+	line-height: 1.6;
+	color: $color-neutral-1;
 }

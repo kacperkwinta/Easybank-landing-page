@@ -13,7 +13,6 @@ iconClose.addEventListener("click", showMenu);
 
 function showMenu() {
 	wrapperLinks.classList.toggle("visible");
-	overlay.classList.toggle("invisible");
 	iconHamburger.classList.toggle("hidden");
 	iconClose.classList.toggle("hidden");
 }
