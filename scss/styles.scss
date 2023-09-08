@@ -1,6 +1,8 @@
 /////////////////////////////////////
 /// VARIABLES
 /////////////////////////////////////
+
+// colors
 $color-primary-1: hsl(233, 26%, 24%);
 $color-primary-2: hsl(136, 65%, 51%);
 $color-primary-3: hsl(192, 70%, 51%);
@@ -9,6 +11,9 @@ $color-neutral-1: hsl(233, 8%, 62%);
 $color-neutral-2: hsl(220, 16%, 96%);
 $color-neutral-3: hsl(0, 0%, 98%);
 $color-neutral-4: hsl(0, 0%, 100%);
+
+// box-shadows
+$box-shadow-1: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 
 ///////////////////////////////
 /// MIXINS
@@ -55,18 +60,19 @@ $color-neutral-4: hsl(0, 0%, 100%);
 	display: none !important;
 }
 
+.unhide {
+	display: unset !important;
+}
+
 .invisible {
 	opacity: 0 !important;
 	user-select: none !important;
 }
 
 .visible {
+	transform: translateY(0);
 	opacity: 1 !important;
 	user-select: all !important;
-}
-
-.text-center {
-	text-align: center;
 }
 
 .mb-s {
@@ -103,6 +109,243 @@ html {
 
 body {
 	font-size: 1.8rem;
+}
+
+/////////////////////////////////////
+/// TYPOGRAPHY
+/////////////////////////////////////
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 300;
+	color: $color-primary-1;
+}
+
+.heading-1 {
+	font-size: 5.2rem;
+}
+
+.heading-2 {
+	font-size: 3.6rem;
+}
+
+.heading-3 {
+	font-size: 2.4rem;
+}
+
+.heading-4 {
+	font-size: 2rem;
+}
+
+.paragraph {
+	line-height: 1.5;
+	color: $color-neutral-1;
+}
+
+.btn {
+	color: $color-neutral-4 !important;
+	text-decoration: none;
+	padding: 1.4rem 2.8rem;
+	border-radius: 10rem;
+	background: linear-gradient(to right, $color-primary-2, $color-primary-3);
+
+	&:hover {
+		transition: all 150ms ease;
+		opacity: 0.75;
+	}
+}
+
+/////////////////////////////////////
+/// NAVIGATION
+/////////////////////////////////////
+nav {
+	background-color: $color-neutral-4;
+	padding: 2.4rem 12.6rem;
+	box-shadow: $box-shadow-1;
+	z-index: 100;
+
+	@include flex(space-between, center);
+
+	.wrapper {
+		@include flex(center, center);
+		gap: 3.2rem;
+	}
+
+	a {
+		position: relative;
+
+		&:visited,
+		&:link {
+			text-decoration: none;
+			color: $color-neutral-1;
+		}
+
+		&:hover,
+		&:active {
+			transition: all 150ms ease;
+			color: $color-primary-1;
+		}
+
+		&:not(.btn)::after {
+			content: "";
+			position: absolute;
+			bottom: -1rem;
+			height: 3px;
+			width: 0%;
+			background: linear-gradient(to right, $color-primary-2, $color-primary-3);
+			display: block;
+			opacity: 0;
+		}
+
+		&:hover::after {
+			transition: all 450ms ease;
+			width: 100%;
+			opacity: 1;
+		}
+	}
+}
+
+/////////////////////////////////////
+/// *MOBILE* NAVIGATION
+/////////////////////////////////////
+.btn-menu {
+	@include flex(center, center);
+
+	border: none;
+	border-radius: none;
+	background: transparent;
+	display: none;
+
+	height: 19px;
+
+	@include respond(tab-land) {
+		display: unset;
+	}
+}
+
+.hamburger {
+	display: none;
+}
+
+nav {
+	position: relative;
+
+	@include respond(tab-land) {
+		flex-wrap: wrap;
+
+		.logo {
+			order: -1;
+		}
+
+		.wrapper {
+			position: fixed;
+			top: 6.4rem;
+			left: 0;
+			right: 0;
+			margin: 2.4rem auto 0 auto;
+			background-color: $color-neutral-4;
+			border-radius: 4px;
+			padding: 2.4rem 0;
+			flex-direction: column;
+			width: 50vw;
+
+			transition: all 250ms ease;
+			opacity: 0;
+			user-select: none;
+		}
+
+		a {
+			&:visited,
+			&:link,
+			&:hover,
+			&:active {
+				color: $color-primary-1;
+			}
+
+			&:not(.btn)::after {
+				display: none;
+			}
+
+			&:hover::after {
+				display: none;
+			}
+		}
+
+		.btn {
+			display: none;
+		}
+
+		.hamburger {
+			display: block;
+			order: 2;
+		}
+	}
+}
+
+/////////////////////////////////////
+/// SECTIONS IN RENDER ORDER
+/////////////////////////////////////
+section {
+	padding: 9.6rem 12.6rem;
+}
+
+.section-cta {
+	position: relative;
+
+	@include flex(flex-start, center);
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: -20%;
+		right: -8%;
+		height: 125vh;
+		width: 50rem;
+		display: block;
+		background-repeat: no-repeat no-repeat;
+		background-size: cover;
+		background-image: url(../images/image-mockups.png);
+	}
+
+	height: 90vh;
+	background-image: url(../images/bg-intro-desktop.svg);
+	background-repeat: no-repeat no-repeat;
+	background-size: cover;
+	background-position-x: 64rem;
+	background-position-y: -30rem;
+
+	.wrapper {
+		max-width: 42ch;
+
+		@include flex(center, flex-start);
+		flex-direction: column;
+		gap: 2.4rem;
+	}
+}
+
+.section-features {
+	background-color: $color-neutral-3;
+
+	.wrapper {
+		max-width: 60ch;
+		@include flex(center, flex-start);
+		flex-direction: column;
+		gap: 2.4rem;
+	}
+
+	.container {
+		@include flex(flex-start, center);
+		flex-wrap: wrap;
+		gap: 2.4rem;
+	}
+
+	.feature {
+		max-width: 24ch;
+		@include flex(center, flex-start);
+		flex-direction: column;
+		gap: 2.4rem;
+	}
 }
 
 // SPACING SYSTEM (px)
