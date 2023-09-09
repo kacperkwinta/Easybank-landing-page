@@ -156,6 +156,11 @@ h4 {
 	}
 }
 
+.author {
+	font-size: 1.4rem;
+	color: $color-neutral-1;
+}
+
 /////////////////////////////////////
 /// NAVIGATION
 /////////////////////////////////////
@@ -300,8 +305,6 @@ section {
 		position: absolute;
 		top: -20%;
 		right: -8%;
-		height: 125vh;
-		width: 50rem;
 		display: block;
 		background-repeat: no-repeat no-repeat;
 		background-size: cover;
@@ -335,7 +338,7 @@ section {
 	}
 
 	.container {
-		@include flex(flex-start, center);
+		@include flex(space-between, center);
 		flex-wrap: wrap;
 		gap: 2.4rem;
 	}
@@ -345,6 +348,39 @@ section {
 		@include flex(center, flex-start);
 		flex-direction: column;
 		gap: 2.4rem;
+	}
+}
+
+.section-articles {
+	background: $color-neutral-2;
+
+	.container {
+		@include flex(space-between, center);
+		flex-wrap: wrap;
+		gap: 2.4rem;
+	}
+
+	article {
+		@include flex(center, flex-start);
+		flex-direction: column;
+		gap: 1.2rem;
+
+		background: $color-neutral-4;
+		border-radius: 4px;
+		overflow: hidden;
+		max-width: 26ch;
+
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	.article-text {
+		padding: 2.4rem;
+		@include flex(center, flex-start);
+		gap: 1.2rem;
+		flex-direction: column;
 	}
 }
 
