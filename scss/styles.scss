@@ -45,7 +45,7 @@ $box-shadow-1: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 		}
 	}
 
-	@if $breakpoint ==tab {
+	@if $breakpoint ==tab-land-s {
 		@media only screen and (max-width: 62.5em) {
 			// 1100px
 			@content;
@@ -405,6 +405,15 @@ footer {
 	flex-wrap: wrap;
 	gap: 6.4rem;
 
+	@include respond(tab-land-s) {
+		justify-content: center;
+	}
+
+	@include respond(tab-port) {
+		flex-direction: column;
+		align-items: center;
+	}
+
 	div {
 		height: 12.6rem;
 	}
@@ -412,6 +421,10 @@ footer {
 	.socials {
 		@include flex(space-between, flex-start);
 		flex-direction: column;
+
+		@include respond(tab-port) {
+			align-items: center;
+		}
 
 		.wrapper {
 			@include flex(center, flex-end);
@@ -432,6 +445,10 @@ footer {
 	.links {
 		@include flex(space-between, flex-start);
 		flex-direction: column;
+
+		@include respond(tab-port) {
+			align-items: center;
+		}
 	}
 
 	a {
@@ -454,6 +471,10 @@ footer {
 
 		.paragraph {
 			color: $color-neutral-1;
+		}
+
+		@include respond(tab-land-s) {
+			align-items: center;
 		}
 	}
 }
