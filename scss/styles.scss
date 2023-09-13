@@ -46,7 +46,7 @@ $box-shadow-1: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 	}
 
 	@if $breakpoint ==tab-land-s {
-		@media only screen and (max-width: 62.5em) {
+		@media only screen and (max-width: 68.75em) {
 			// 1100px
 			@content;
 		}
@@ -299,8 +299,17 @@ nav {
 /////////////////////////////////////
 /// SECTIONS IN RENDER ORDER
 /////////////////////////////////////
-section {
+section,
+footer {
 	padding: 9.6rem 12.6rem;
+
+	@include respond(phone) {
+		padding: 4.8rem 6.4rem;
+	}
+
+	@include respond(phone-s) {
+		padding: 3.2rem;
+	}
 }
 
 .section-cta {
@@ -364,10 +373,22 @@ section {
 .section-articles {
 	background: $color-neutral-2;
 
+	@include respond(tab-port) {
+		h2 {
+			text-align: center;
+		}
+	}
+
 	.container {
 		@include flex(space-between, flex-start);
 		flex-wrap: wrap;
 		gap: 3.2rem;
+
+		@include respond(tab-port) {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 
 	article {
@@ -375,6 +396,14 @@ section {
 		border-radius: 4px;
 		overflow: hidden;
 		max-width: 26ch;
+
+		@include respond(tab-port) {
+			max-width: 75%;
+		}
+
+		@include respond(phone) {
+			max-width: 90%;
+		}
 
 		img {
 			width: 100%;
@@ -399,7 +428,6 @@ section {
 /////////////////////////////////////
 footer {
 	background: $color-primary-1;
-	padding: 4.8rem 12.6rem;
 
 	@include flex(space-between, flex-start);
 	flex-wrap: wrap;
@@ -407,6 +435,7 @@ footer {
 
 	@include respond(tab-land-s) {
 		justify-content: center;
+		align-items: center;
 	}
 
 	@include respond(tab-port) {
@@ -475,6 +504,7 @@ footer {
 
 		@include respond(tab-land-s) {
 			align-items: center;
+			text-align: center;
 		}
 	}
 }
