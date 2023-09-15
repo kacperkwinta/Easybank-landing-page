@@ -26,5 +26,6 @@ const links = document.querySelectorAll("nav a");
 
 // Adding click event listener to each link
 links.forEach((link) => {
-	link.addEventListener("click", toggleMenu);
+	if (navLinks.classList.contains("visible"))
+		link.addEventListener("click", toggleMenu);
 });
