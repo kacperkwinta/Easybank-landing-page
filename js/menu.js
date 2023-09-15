@@ -12,7 +12,7 @@ function toggleMenu() {
 	navLinks.classList.toggle("visible");
 	hamburger.classList.toggle("hidden");
 	closeHamburger.classList.toggle("hidden");
-	menuBg.classList.toggle("visible");
+	menuBg.classList.toggle("unhide");
 }
 
 // Event listener for hamburger icon click

@@ -183,19 +183,18 @@ h4 {
 	width: 100%;
 	background: linear-gradient(to bottom, $color-primary-1, transparent);
 	transition: all 450ms ease;
-	user-select: none;
-	opacity: 1;
-	z-index: 90;
+	z-index: 5;
+	display: none;
 }
 
 nav {
 	background-color: $color-neutral-4;
 	padding: 1.6rem 12.6rem;
 	box-shadow: $box-shadow-1;
-	z-index: 100;
 	position: sticky !important;
 	top: 0;
 	transition: all 350ms ease;
+	z-index: 10;
 
 	@include flex(space-between, center);
 
