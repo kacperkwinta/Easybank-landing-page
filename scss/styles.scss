@@ -77,7 +77,6 @@ $box-shadow-1: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 }
 
 .visible {
-	transform: translateY(0);
 	opacity: 1 !important;
 	user-select: all !important;
 }
@@ -112,6 +111,10 @@ html {
 	box-sizing: border-box;
 	font-size: 62.5%;
 	font-family: "Public Sans", sans-serif;
+
+	@include respond(tab-port) {
+		font-size: 50%;
+	}
 }
 
 body {
@@ -130,7 +133,7 @@ h4 {
 }
 
 .heading-1 {
-	font-size: 5.2rem;
+	font-size: 4.4rem;
 }
 
 .heading-2 {
@@ -171,11 +174,27 @@ h4 {
 /////////////////////////////////////
 /// NAVIGATION
 /////////////////////////////////////
+.menu-bg {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(to bottom, $color-primary-1, transparent);
+	transition: all 450ms ease;
+	opacity: 1;
+	z-index: 90;
+}
+
 nav {
 	background-color: $color-neutral-4;
-	padding: 2.4rem 12.6rem;
+	padding: 1.6rem 12.6rem;
 	box-shadow: $box-shadow-1;
 	z-index: 100;
+	position: sticky !important;
+	top: 0;
+	transition: all 350ms ease;
 
 	@include flex(space-between, center);
 
@@ -229,6 +248,7 @@ nav {
 	background: transparent;
 	display: none;
 
+	// for pixel perfect
 	height: 19px;
 
 	@include respond(tab-land) {
@@ -245,6 +265,7 @@ nav {
 
 	@include respond(tab-land) {
 		flex-wrap: wrap;
+		padding: 1.6rem 4.8rem;
 
 		.logo {
 			order: -1;
@@ -266,6 +287,10 @@ nav {
 			transition: all 250ms ease;
 			opacity: 0;
 			user-select: none;
+
+			@include respond(phone) {
+				width: 80%;
+			}
 		}
 
 		a {
@@ -304,45 +329,94 @@ footer {
 	padding: 9.6rem 12.6rem;
 
 	@include respond(phone) {
-		padding: 4.8rem 6.4rem;
+		padding: 6.4rem;
 	}
 
 	@include respond(phone-s) {
-		padding: 3.2rem;
+		padding: 4.8rem 3.2rem;
 	}
 }
 
 .section-cta {
-	position: relative;
-
 	@include flex(flex-start, center);
-
-	&::after {
-		content: "";
-		position: absolute;
-		top: -20%;
-		right: -8%;
-		display: block;
-		width: auto;
-		height: 100vh;
-		background-repeat: no-repeat no-repeat;
-		background-size: cover;
-		background-image: url(../images/image-mockups.png);
-	}
-
+	position: relative;
 	height: 90vh;
 	background-image: url(../images/bg-intro-desktop.svg);
 	background-repeat: no-repeat no-repeat;
 	background-size: cover;
-	background-position-x: 64rem;
+	background-position-x: 52rem;
 	background-position-y: -30rem;
+
+	@include respond(tab-land-s) {
+		height: auto;
+
+		flex-direction: column;
+		align-items: center;
+
+		background-image: url(../images/bg-intro-mobile.svg);
+		background-position: center;
+		background-position-y: -50rem;
+	}
+
+	@include respond(phone) {
+		background-position-y: -35rem;
+	}
+
+	@include respond(phone-s) {
+		background-position-y: -25rem;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: -30%;
+		right: 0%;
+		height: 155%;
+		width: 45vw;
+		background-repeat: no-repeat no-repeat;
+		background-size: cover;
+		background-image: url(../images/image-mockups.png);
+
+		@include respond(tab-land-s) {
+			display: none;
+		}
+	}
+
+	.mockups {
+		display: none;
+
+		@include respond(tab-land-s) {
+			display: block;
+			scale: 0.75;
+			max-width: 100%;
+			margin: -75vh auto 0;
+		}
+
+		@include respond(tab-land-s) {
+			margin-top: -70%;
+		}
+
+		@include respond(phone-s) {
+			margin-top: -60%;
+		}
+	}
 
 	.wrapper {
 		max-width: 42ch;
 
-		@include flex(center, flex-start);
+		@include flex(space-around, flex-start);
 		flex-direction: column;
 		gap: 2.4rem;
+
+		@include respond(tab-land-s) {
+			margin-top: -9.6rem;
+			text-align: center;
+			align-items: center;
+		}
+
+		@include respond(phone) {
+			margin-top: -4.8rem;
+		}
 	}
 }
 
@@ -364,12 +438,13 @@ footer {
 	.container {
 		@include flex(space-between, center);
 		flex-wrap: wrap;
-		gap: 2.4rem;
+		gap: 4.8rem;
 
 		@include respond(tab-port) {
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			gap: 6.4rem;
 		}
 	}
 
@@ -415,11 +490,11 @@ footer {
 		max-width: 26ch;
 
 		@include respond(tab-port) {
-			max-width: 75%;
+			max-width: 65%;
 		}
 
 		@include respond(phone) {
-			max-width: 90%;
+			max-width: 75%;
 		}
 
 		img {
