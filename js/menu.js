@@ -15,6 +15,14 @@ function toggleMenu() {
 	menuBg.classList.toggle("unhide");
 }
 
+// Function to hide the menu
+function hideMenu() {
+	navLinks.classList.remove("visible");
+	hamburger.classList.remove("hidden");
+	closeHamburger.classList.add("hidden");
+	menuBg.classList.remove("unhide");
+}
+
 // Event listener for hamburger icon click
 hamburger.addEventListener("click", toggleMenu);
 
@@ -26,6 +34,9 @@ const links = document.querySelectorAll("nav a");
 
 // Adding click event listener to each link
 links.forEach((link) => {
-	if (navLinks.classList.contains("visible"))
-		link.addEventListener("click", toggleMenu);
+	link.addEventListener("click", function () {
+		if (navLinks.classList.contains("visible")) {
+			hideMenu();
+		}
+	});
 });

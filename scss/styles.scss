@@ -329,11 +329,11 @@ footer {
 	padding: 9.6rem 12.6rem;
 
 	@include respond(phone) {
-		padding: 6.4rem;
+		padding: 7.2rem;
 	}
 
 	@include respond(phone-s) {
-		padding: 4.8rem 3.2rem;
+		padding: 9.6rem 3.2rem;
 	}
 }
 
@@ -355,6 +355,10 @@ footer {
 
 		background-image: url(../images/bg-intro-mobile.svg);
 		background-position: center;
+		background-position-y: -60rem;
+	}
+
+	@include respond(tab-port) {
 		background-position-y: -50rem;
 	}
 
@@ -432,6 +436,11 @@ footer {
 		@include respond(tab-port) {
 			text-align: center;
 			align-items: center;
+			margin-inline: auto;
+		}
+
+		@include respond(phone-s) {
+			margin-bottom: 9.6rem;
 		}
 	}
 
@@ -441,10 +450,9 @@ footer {
 		gap: 4.8rem;
 
 		@include respond(tab-port) {
-			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			gap: 6.4rem;
+			gap: 3.2rem;
 		}
 	}
 
@@ -603,7 +611,7 @@ footer {
 
 // attribution
 .attribution {
-	font-size: 1.6rem;
+	// font-size: 1.6rem;
 	padding: 1.6rem;
 	background-color: $color-primary-1;
 	color: $color-primary-2;
