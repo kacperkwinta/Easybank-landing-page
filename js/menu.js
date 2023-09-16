@@ -40,3 +40,19 @@ links.forEach((link) => {
 		}
 	});
 });
+
+// animations
+const observer = new IntersectionObserver((entries) => {
+	entries.forEach((entry) => {
+		// console.log(entry);
+		if (entry.isIntersecting) {
+			entry.target.classList.add("animation-show");
+			observer.unobserve(entry.target); // Stop observing the element after the animation has been triggered
+		} else {
+			entry.target.classList.remove("animation-show");
+		}
+	});
+});
+
+const hiddenElements = document.querySelectorAll(".animation-hidden");
+hiddenElements.forEach((el) => observer.observe(el));

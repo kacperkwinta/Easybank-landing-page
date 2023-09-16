@@ -61,6 +61,18 @@ $box-shadow-1: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 }
 
 ///////////////////////////////
+/// ANIMATIONS
+///////////////////////////////
+.animation-hidden {
+	opacity: 0;
+	transition: all 750ms ease;
+}
+
+.animation-show {
+	opacity: 1;
+}
+
+///////////////////////////////
 /// UTILITY CLASSES
 ///////////////////////////////
 .hidden {
@@ -453,6 +465,10 @@ footer {
 			align-items: center;
 			justify-content: center;
 			gap: 3.2rem;
+		}
+
+		@include respond(phone) {
+			gap: 6.4rem;
 		}
 	}
 
